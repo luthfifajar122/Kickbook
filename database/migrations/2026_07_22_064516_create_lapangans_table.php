@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('lapangans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->enum('jenis', ['Sintetis', 'Vinyl', 'Rumput'])->default('Sintetis');
+            $table->integer('harga_per_jam');
+            $table->string('foto')->nullable();
+            $table->enum('status', ['Tersedia', 'Maintenance'])->default('Tersedia');
             $table->timestamps();
         });
     }
