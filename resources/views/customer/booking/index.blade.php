@@ -12,25 +12,28 @@
             </div>
         @endif
 
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold">Booking Saya</h2>
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight">Booking Saya</h2>
+                <p class="text-slate-500 text-sm mt-1">Pantau status dan riwayat booking kamu.</p>
+            </div>
             <a href="{{ route('booking.create') }}"
-               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+               class="btn-primary !text-sm">
                 + Booking Baru
             </a>
         </div>
 
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <table class="w-full">
-                <thead class="bg-gray-100">
+        <div class="table-wrap">
+            <table class="w-full text-sm min-w-[720px]">
+                <thead class="table-head">
                     <tr>
-                        <th class="p-3">No</th>
-                        <th class="p-3">Lapangan</th>
-                        <th class="p-3">Tanggal</th>
-                        <th class="p-3">Jam</th>
-                        <th class="p-3">Total</th>
-                        <th class="p-3">Status</th>
-                        <th class="p-3">Aksi</th>
+                        <th class="p-3.5 text-left font-semibold">No</th>
+                        <th class="p-3.5 text-left font-semibold">Lapangan</th>
+                        <th class="p-3.5 text-left font-semibold">Tanggal</th>
+                        <th class="p-3.5 text-left font-semibold">Jam</th>
+                        <th class="p-3.5 text-left font-semibold">Total</th>
+                        <th class="p-3.5 text-left font-semibold">Status</th>
+                        <th class="p-3.5 text-left font-semibold">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +54,7 @@
                                         'Dibatalkan' => 'bg-red-100 text-red-700',
                                     };
                                 @endphp
-                                <span class="px-2 py-1 rounded text-sm font-medium {{ $class }}">
+                                <span class="badge {{ $class }}">
                                     {{ $booking->status }}
                                 </span>
                                 @if($booking->pembayaran)

@@ -11,10 +11,10 @@
             <div class="md:flex">
                 @if($lapangan->foto)
                     <img src="{{ asset('storage/' . $lapangan->foto) }}" alt="{{ $lapangan->nama }}"
-                         class="md:w-96 h-64 object-cover">
+                         class="md:w-96 aspect-[16/10] md:aspect-auto md:h-64 object-cover">
                 @else
-                    <div class="md:w-96 h-64 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-7xl">
-                        ⚽
+                    <div class="md:w-96 h-56 md:h-64 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white/70">
+                        <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                 @endif
                 <div class="p-6 flex flex-col justify-center">
@@ -39,9 +39,9 @@
                  data-id="{{ $l->id }}" data-harga="{{ $l->harga_per_jam }}">
                 @if($l->foto)
                     <img src="{{ asset('storage/' . $l->foto) }}" alt="{{ $l->nama }}"
-                         class="w-full h-44 object-cover">
+                         class="w-full aspect-[16/10] object-cover">
                 @else
-                    <div class="w-full h-44 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-5xl">⚽</div>
+                    <div class="w-full aspect-[16/10] bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white/70"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
                 @endif
                 <div class="p-4">
                     <h3 class="font-bold text-lg">{{ $l->nama }}</h3>
@@ -63,40 +63,40 @@
                     <p class="text-red-500 text-sm mb-4">{{ $message }}</p>
                 @enderror
 
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="mb-4">
-                        <label class="block font-medium mb-1">Tanggal</label>
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <div class="mb-1">
+                        <label class="label">Tanggal</label>
                         <input type="date" name="tanggal" value="{{ old('tanggal') }}"
-                               class="w-full border rounded-lg p-2.5 @error('tanggal') border-red-500 @enderror">
+                               class="input @error('tanggal') !border-red-500 @enderror">
                         @error('tanggal')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4">
-                        <label class="block font-medium mb-1">Jam Mulai</label>
+                    <div class="mb-1">
+                        <label class="label">Jam Mulai</label>
                         <input type="time" name="jam_mulai" id="jam_mulai" value="{{ old('jam_mulai') }}"
-                               class="w-full border rounded-lg p-2.5 @error('jam_mulai') border-red-500 @enderror">
+                               class="input @error('jam_mulai') !border-red-500 @enderror">
                         @error('jam_mulai')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4">
-                        <label class="block font-medium mb-1">Jam Selesai</label>
+                    <div class="mb-1">
+                        <label class="label">Jam Selesai</label>
                         <input type="time" name="jam_selesai" id="jam_selesai" value="{{ old('jam_selesai') }}"
-                               class="w-full border rounded-lg p-2.5 @error('jam_selesai') border-red-500 @enderror">
+                               class="input @error('jam_selesai') !border-red-500 @enderror">
                         @error('jam_selesai')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
 
-                <div id="totalContainer" class="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200 hidden">
+                <div id="totalContainer" class="mb-6 p-4 bg-blue-50/70 rounded-xl border border-blue-100 hidden">
                     <p class="text-sm text-gray-600">Total Harga</p>
                     <p id="totalHarga" class="text-3xl font-bold text-blue-600">Rp 0</p>
                 </div>
 
                 <button type="submit"
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+                        class="btn-primary w-full !py-3">
                     Booking Sekarang
                 </button>
 

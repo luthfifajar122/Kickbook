@@ -6,14 +6,15 @@
     <title>KickBook Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-100">
+<body class="bg-slate-100 text-slate-800 antialiased">
 
     <div class="min-h-screen flex">
 
         <!-- Sidebar -->
-        <aside class="w-64 bg-gray-900 text-white flex flex-col">
-            <div class="p-5 border-b border-gray-700">
-                <a href="{{ route('admin.dashboard') }}" class="text-2xl font-bold">⚽ KickBook</a>
+        <aside class="hidden lg:flex w-64 bg-slate-900 text-white flex-col shrink-0">
+            <div class="p-5 border-b border-white/10">
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2 text-xl font-bold tracking-tight"><span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black">K</span> KickBook</a>
+                <p class="text-xs text-slate-400 mt-1">Panel Admin</p>
             </div>
 
             <nav class="flex-1 p-4">
@@ -59,8 +60,17 @@
         </aside>
 
         <!-- Content -->
-        <main class="flex-1">
-            <div class="p-8">
+        <main class="flex-1 min-w-0">
+            <!-- Mobile topbar -->
+            <div class="lg:hidden bg-slate-900 text-white px-4 py-3 flex items-center justify-between sticky top-0 z-20">
+                <span class="font-bold">KickBook Admin</span>
+                <div class="flex gap-2 text-sm">
+                    <a href="{{ route('admin.dashboard') }}" class="px-3 py-1.5 rounded-lg bg-white/10">Dashboard</a>
+                    <a href="{{ route('admin.booking.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10">Booking</a>
+                    <a href="{{ route('admin.pembayaran.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10">Bayar</a>
+                </div>
+            </div>
+            <div class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
                 @yield('content')
             </div>
         </main>

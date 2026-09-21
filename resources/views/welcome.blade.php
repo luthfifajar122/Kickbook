@@ -6,26 +6,26 @@
     <title>KickBook - Booking Lapangan Futsal</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-sm fixed w-full z-10">
+    <nav class="bg-white/90 backdrop-blur border-b border-slate-200 fixed w-full z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <div class="text-2xl font-bold text-blue-600">
-                    ⚽ KickBook
+                <div class="flex items-center gap-2 text-xl font-bold tracking-tight">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black">K</span> KickBook
                 </div>
                 <div class="flex items-center gap-4">
                     @auth
                         <a href="{{ Auth::user()->role === 'admin' ? route('admin.dashboard') : route('dashboard') }}"
-                           class="text-gray-600 hover:text-blue-600">Dashboard</a>
+                           class="text-sm font-medium text-slate-600 hover:text-blue-700">Dashboard</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300">Logout</button>
+                            <button class="btn-secondary !px-4 !py-2 !text-sm">Logout</button>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="text-gray-600 hover:text-blue-600">Login</a>
-                        <a href="{{ route('register') }}" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Daftar</a>
+                        <a href="{{ route('login') }}" class="text-sm font-medium text-slate-600 hover:text-blue-700">Login</a>
+                        <a href="{{ route('register') }}" class="btn-primary !px-5 !py-2 !text-sm">Daftar</a>
                     @endauth
                 </div>
             </div>
@@ -33,21 +33,22 @@
     </nav>
 
     <!-- Hero -->
-    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+    <section class="pt-28 pb-16 sm:pb-20 bg-gradient-to-br from-blue-700 via-blue-600 to-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Booking Lapangan Futsal<br>Jadi Lebih Mudah</h1>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wide mb-5">BOOKING LAPANGAN FUTSAL ONLINE</span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Booking Lapangan Futsal<br class="hidden sm:block"> Jadi Lebih Mudah</h1>
             <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                 Cari, pesan, dan bayar lapangan futsal favoritmu secara online. 
                 Tanpa ribet, tanpa antri.
             </p>
             @auth
                 <a href="{{ route('customer.lapangan.index') }}" 
-                   class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition shadow-lg">
+                   class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg">
                     Lihat Lapangan
                 </a>
             @else
                 <a href="{{ route('register') }}" 
-                   class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition shadow-lg">
+                   class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg">
                     Mulai Sekarang
                 </a>
             @endauth
@@ -55,10 +56,11 @@
     </section>
 
     <!-- Fitur -->
-    <section class="py-20 bg-white">
+    <section class="py-16 sm:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">Kenapa KickBook?</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-center mb-3">Kenapa KickBook?</h2>
+            <p class="text-slate-500 text-center mb-10 max-w-xl mx-auto">Semua kebutuhan booking futsal dalam satu tempat yang rapi dan cepat.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="text-center p-6">
                     <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,10 +122,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12">
+    <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="text-2xl font-bold text-white mb-4">⚽ KickBook</div>
+                <div class="text-xl font-bold text-white mb-2">KickBook</div>
                 <p class="mb-4">Sistem Booking Lapangan Futsal</p>
                 <p>&copy; {{ date('Y') }} KickBook. All rights reserved.</p>
             </div>
